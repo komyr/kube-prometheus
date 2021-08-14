@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app.kubernetes.io/component: grafana
@@ -130,8 +130,9 @@ spec:
         runAsUser: 65534
       serviceAccountName: grafana
       volumes:
-      - emptyDir: {}
-        name: grafana-storage
+      - name: grafana-storage
+        persistentVolumeClaim:
+          claimName: grafana-storage
       - name: grafana-datasources
         secret:
           secretName: grafana-datasources
@@ -207,3 +208,7 @@ spec:
       - configMap:
           name: grafana-dashboard-workload-total
         name: grafana-dashboard-workload-total
+  serviceName: minecraft
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: OnDelete

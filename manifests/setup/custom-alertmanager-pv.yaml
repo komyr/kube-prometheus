@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: monitoring-alertmanager-storage-1
+  labels:
+    kubernetes.io/namespace: monitoring
+    app.kubernetes.io/name: alertmanager
+spec:
+  capacity:
+    storage: 10Gi
+  nfs:
+    server: 10.1.10.1
+    path: '/mnt/sto1-n1_ssd/komyr/int.komyr.com/kube/c2-n1/monitoring/alertmanager/storage-1'
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: monitoring-alertmanager-storage-2
+  labels:
+    kubernetes.io/namespace: monitoring
+    app.kubernetes.io/name: alertmanager
+spec:
+  capacity:
+    storage: 10Gi
+  nfs:
+    server: 10.1.10.1
+    path: '/mnt/sto1-n1_ssd/komyr/int.komyr.com/kube/c2-n1/monitoring/alertmanager/storage-2'
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: monitoring-alertmanager-storage-3
+  labels:
+    kubernetes.io/namespace: monitoring
+    app.kubernetes.io/name: alertmanager
+spec:
+  capacity:
+    storage: 10Gi
+  nfs:
+    server: 10.1.10.1
+    path: '/mnt/sto1-n1_ssd/komyr/int.komyr.com/kube/c2-n1/monitoring/alertmanager/storage-3'
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem

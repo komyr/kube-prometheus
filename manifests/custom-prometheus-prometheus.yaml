@@ -10,6 +10,17 @@ metadata:
   name: k8s
   namespace: monitoring
 spec:
+  storage:
+    volumeClaimTemplate:
+      spec:
+        selector:
+          matchLabels:
+            app.kubernetes.io/name: prometheus
+        resources:
+          requests:
+            storage: 10Gi
+  retention: 1y
+  retentionSize: 50GB
   alerting:
     alertmanagers:
     - apiVersion: v2
