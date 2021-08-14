@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: grafana
   namespace: monitoring
+  annotations: {
+    nginx.ingress.kubernetes.io/auth-type: 'basic',
+    nginx.ingress.kubernetes.io/auth-secret: 'basic-auth',
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required',
 spec:
   rules:
   - host: grafana.c2-n1.kube.int.komyr.com
